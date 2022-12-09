@@ -118,6 +118,8 @@ int main(void)
     if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){
          direction *= -1;
          HAL_Delay(50);
+         while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){ }
+         HAL_Delay(50);
     }
 
     idx += direction;
@@ -126,9 +128,9 @@ int main(void)
     	idx = 3;
     }
     HAL_GPIO_TogglePin(GPIOD, lights[idx]);
-    HAL_Delay(200);
+    HAL_Delay(100);
     HAL_GPIO_TogglePin(GPIOD, lights[idx]);
-    HAL_Delay(200);
+    HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
